@@ -260,6 +260,9 @@ function startContainer(filterCallback) {
 
       var cmdOptions = [];
       cmdOptions.push('run');
+      if (containerSpec.volume) {
+        cmdOptions.push(`-v ${containerSpec.volume}`);
+      }
       cmdOptions.push('-d');
       if (containerSpec.hostmapping) {
         _.forOwn(containerSpec.hostmapping, function(mappedto, hostname) {
